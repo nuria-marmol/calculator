@@ -43,8 +43,9 @@ function seeResult() {
     })
     // Converting previous array to string again
     const operation = numberArray.join("");
-    // Eval performs the operation in a string
-    numberOnScreen.textContent = eval(operation);
+    // This way JS reads numbers and operators as what they are
+    const result = Function("return " + operation);
+    numberOnScreen.textContent = result();
 }
 
 // Events

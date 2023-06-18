@@ -58,6 +58,7 @@ body {
 /* Clicked numbers */
 .calculator__screen > span {
     color: var(--color-dark-grey);
+    font-size: 1.25rem;
 }
 
 /* Div wrapping all keys */
@@ -75,6 +76,7 @@ body {
     box-shadow: 1px 2px 2px var(--color-medium-grey);
     background-color: var(--color-super-light-grey);
     padding: .5rem;
+    cursor: pointer;
 }
 
 /* Making RESET and = keys take up 2 columns */
@@ -92,4 +94,22 @@ body {
 .calculator__keys > span:last-child {
     background-color: var(--color-blue);
     color: var(--color-white);
+}
+
+.calculator__keys > span:nth-child(4),
+.calculator__keys > span:nth-child(17) {
+    text-transform: uppercase;
+}
+
+/* Mobile */
+@media screen and (max-width: 480px) {
+    .calculator__screen,
+    .calculator__keys {
+        width: 15rem;
+    }
+
+    /* Every key */
+    .calculator__keys > span {
+        padding: .75rem;
+    }
 }
