@@ -1,27 +1,57 @@
-const allKeys = ["7", "8", "9", "del", "4", "5", "6", "+", "1", "2", "3", "-", ",", "0", "/", "x", "reset", "="];
-const keysTemplate = document.querySelector("#keys-template").content.firstElementChild;
-// The template target
-const calculatorKeys = document.querySelector("#calculator-keys");
+let numberOnScreen = document.querySelector("#screen-numbers");
+const deleteKey = document.querySelector(".calculator__keys span:nth-child(4)");
+const resetKey = document.querySelector(".calculator__keys span:nth-child(17)");
+const calculateKey = document.querySelector(".calculator__keys span:last-child");
+const allOtherKeys = document.querySelectorAll(".calculator__keys span:not(span:nth-child(4), span:nth-child(17), span:last-child)");
 
 /**
- * Creating the keys for the calculator
+ * Passing the clicked number or symbol to the screen (div)
  */
-function createAllKeys() {
-    // Transforming "del" and "reset" into uppercase
-    const allKeysWithUpperCase = allKeys.map(function (element) {
-        if (element.length > 1) {
-            return element.toUpperCase();
-        } else {
-            return element;
-        }
-    })
-
-    // Passing the array to the target
-    allKeysWithUpperCase.forEach(function (key) {
-        const templateCopy = keysTemplate.cloneNode(true);
-        templateCopy.textContent = key;
-        calculatorKeys.appendChild(templateCopy);
-    })
+function addNumberOrSymbol(event) {
+    numberOnScreen.textContent = numberOnScreen.textContent + event.target.textContent;
 }
 
-createAllKeys();
+/**
+ * Removing the last number or symbol from the screen
+ */
+function deleteLastNumberOrSymbol() {
+    numberOnScreen.textContent = numberOnScreen.textContent.slice(0, numberOnScreen.textContent.length - 1);
+}
+
+/**
+ * Fully emptying the screen
+ */
+function clearScreen() {
+    numberOnScreen.textContent = "";
+}
+
+/**
+ * Calculating the desired operation and showing the result
+ */
+function seeResult() {
+    // Converting the string to array
+    const stringArray = numberOnScreen.textContent.split("");
+    // Changing the symbols that JS cannot operate with
+    const numberArray = stringArray.map(function (element) {
+        if (element === "x") {
+            return "*";
+        } else if (element === ",") {
+            return ".";
+        } else {
+            return element;
+        }      
+    })
+    // Converting previous array to string again
+    const operation = numberArray.join("");
+    // Eval performs the operation in a string
+    numberOnScreen.textContent = eval(operation);
+}
+
+// Events
+allOtherKeys.forEach(function(element) {
+    element.addEventListener("click", addNumberOrSymbol);
+})
+
+deleteKey.addEventListener("click", deleteLastNumberOrSymbol);
+resetKey.addEventListener("click", clearScreen);
+calculateKey.addEventListener("click", seeResult);

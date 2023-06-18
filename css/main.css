@@ -48,9 +48,11 @@ body {
 }
 
 .calculator__screen {
+    height: 1rem;
     padding: 1rem;
     background-color: var(--color-white);
     text-align: end;
+    overflow: hidden;
 }
 
 /* Clicked numbers */
