@@ -1,0 +1,93 @@
+:root {
+    --color-super-light-grey: #EBEBEB;
+    --color-light-grey: #D1CCCC;
+    --color-medium-grey: #A69D91;
+    --color-dark-grey: #35352C;
+    --color-blue: #377F86;
+    --color-white: #FFFFFF;
+}
+
+@font-face {
+    font-family: "Spartan";
+    src: url(../fonts/league-spartan-bold.woff2) format("woff2");
+    font-weight: 700;
+}
+
+html,
+body,
+.calculator {
+    height: 100%;
+}
+
+body {
+    margin: unset;
+    color: var(--color-dark-grey);
+    font-family: "Spartan", sans-serif;
+}
+
+/* <main> */
+.calculator {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    /* Space between screen and keys */
+    gap: .75rem;
+    background-color: var(--color-super-light-grey);
+}
+
+.calculator__screen,
+.calculator__keys,
+.calculator__keys > span {
+    border-radius: .25rem;
+}
+
+.calculator__screen,
+.calculator__keys {
+    width: 14rem;
+}
+
+.calculator__screen {
+    padding: 1rem;
+    background-color: var(--color-white);
+    text-align: end;
+}
+
+/* Clicked numbers */
+.calculator__screen > span {
+    color: var(--color-dark-grey);
+}
+
+/* Div wrapping all keys */
+.calculator__keys {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: .5rem;
+    padding: 2rem 1rem;
+    background-color: var(--color-light-grey);
+    text-align: center;
+}
+
+/* Every key */
+.calculator__keys > span {
+    box-shadow: 1px 2px 2px var(--color-medium-grey);
+    background-color: var(--color-super-light-grey);
+    padding: .5rem;
+}
+
+/* Making RESET and = keys take up 2 columns */
+.calculator__keys > span:nth-child(17) {
+    grid-column: 1 / 3;
+}
+
+.calculator__keys > span:last-child {
+    grid-column: 3 / 5;
+}
+
+/* DEL, RESET and = keys */
+.calculator__keys > span:nth-child(4),
+.calculator__keys > span:nth-child(17),
+.calculator__keys > span:last-child {
+    background-color: var(--color-blue);
+    color: var(--color-white);
+}
