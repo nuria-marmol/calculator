@@ -45,7 +45,9 @@ function seeResult() {
     const operation = numberArray.join("");
     // This way JS reads numbers and operators as what they are
     const result = Function("return " + operation);
-    numberOnScreen.textContent = result();
+    // Replacing the dot for a comma
+    const backToCommas = result().toString().replace(".", ",")
+    numberOnScreen.textContent = backToCommas;
 }
 
 // Events
