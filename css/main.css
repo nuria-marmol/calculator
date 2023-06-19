@@ -59,6 +59,7 @@ body {
 .calculator__screen > span {
     color: var(--color-dark-grey);
     font-size: 1.25rem;
+    line-height: 100%;
 }
 
 /* Div wrapping all keys */
@@ -74,9 +75,15 @@ body {
 /* Every key */
 .calculator__keys > span {
     box-shadow: 1px 2px 2px var(--color-medium-grey);
-    background-color: var(--color-super-light-grey);
     padding: .5rem;
+    background-color: var(--color-super-light-grey);
     cursor: pointer;
+    transition: .5s;
+}
+
+.calculator__keys > span:hover {
+    box-shadow: 1px 2px 2px var(--color-blue);
+    color: var(--color-blue);
 }
 
 /* Making RESET and = keys take up 2 columns */
@@ -94,6 +101,14 @@ body {
 .calculator__keys > span:last-child {
     background-color: var(--color-blue);
     color: var(--color-white);
+    transition: .5s;
+}
+
+.calculator__keys > span:nth-child(4):hover,
+.calculator__keys > span:nth-child(17):hover,
+.calculator__keys > span:last-child:hover {
+    box-shadow: 1px 2px 2px var(--color-medium-grey);
+    opacity: .9;
 }
 
 .calculator__keys > span:nth-child(4),
@@ -105,7 +120,7 @@ body {
 @media screen and (max-width: 480px) {
     .calculator__screen,
     .calculator__keys {
-        width: 15rem;
+        width: 16rem;
     }
 
     /* Every key */

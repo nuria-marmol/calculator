@@ -30,19 +30,22 @@ function clearScreen() {
  */
 function seeResult() {
     // Converting the string to array
-    const stringArray = numberOnScreen.textContent.split("");
+    const screenArray = numberOnScreen.textContent.split("");
     // Changing the symbols that JS cannot operate with
-    const numberArray = stringArray.map(function (element) {
-        if (element === "x") {
-            return "*";
-        } else if (element === ",") {
-            return ".";
-        } else {
-            return element;
-        }      
+    const arrayWithOperators = screenArray.map(function (element) {
+        switch (element) {
+            case "x":
+                return "*";
+                break;
+            case ",":
+                return ".";
+                break;
+            default:
+                return element;
+        }
     })
     // Converting previous array to string again
-    const operation = numberArray.join("");
+    const operation = arrayWithOperators.join("");
     // This way JS reads numbers and operators as what they are
     const result = Function("return " + operation);
     // Replacing the dot for a comma
