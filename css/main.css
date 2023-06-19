@@ -120,11 +120,23 @@ body {
 @media screen and (max-width: 480px) {
     .calculator__screen,
     .calculator__keys {
-        width: 16rem;
+        width: 16.5rem;
+    }
+
+    .calculator__screen {
+        height: 1.5rem;
+    }
+
+    .calculator__screen > span {
+        line-height: 130%;
+    }
+
+    .calculator__keys {
+        padding: 2.5rem 1rem;
     }
 
     /* Every key */
     .calculator__keys > span {
-        padding: .75rem;
+        padding: 1rem;
     }
 }
